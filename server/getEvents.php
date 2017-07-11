@@ -14,6 +14,7 @@ session_start();
     $resultado1 = $exion->consultar(['usuarios'], ['id'], "WHERE email ='".$_SESSION['username']."'");
     $fila1 = $resultado1->fetch_assoc();
 
+
     // ------------------------------------------------------------------------------------
 
     if($response['conexion']=='OK'){
@@ -21,19 +22,21 @@ session_start();
       // consulta para tabla eventos y enviar eventos
       $resultado2 = $exion->consultar(['eventos'], ['id','titulo','f_inicio','h_inicio','f_final','h_final','dia_entero'],
        "WHERE fk_usuarios ='".$fila1['id']."'");
+
        $i=0;
-       /*
+
        while($fila2 = $resultado2->fetch_assoc()){
-         $data['eventos'][$i]['id']=$fila2['id'];
-         $data['eventos'][$i]['titulo']=$fila2['titulo'];
-         $data['eventos'][$i]['f_inicio']=$fila2['f_inicio'];
-         $data['eventos'][$i]['h_inicio']=$fila2['h_inicio'];
-         $data['eventos'][$i]['f_final']=$fila2['f_final'];
-         $data['eventos'][$i]['h_final']=$fila2['h_final'];
-         $data['eventos'][$i]['dia_entero']=$fila2['dia_entero'];
+          $data['eventos'][$i]['id']=$fila2['id'];
+          $data['eventos'][$i]['title']=$fila2['titulo'];
+          $data['eventos'][$i]['start']=$fila2['f_inicio'];
+
+          if($fila2['dia_entero']=='0'){
+            $data['eventos'][$i]['end']=$fila2['f_final'];
+          }
+
          $i++;
        }
-       */
+
 
       $data['msg']='OK';
 

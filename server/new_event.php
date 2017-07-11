@@ -14,7 +14,7 @@
     $fila = $resultado->fetch_assoc();
 
     $data['fk_usuarios']= $fila['id'];
-
+    
     $data['titulo'] = "'".$_POST['titulo']."'";
     $data['f_inicio'] = "'".$_POST['start_date']."'";
 
@@ -22,7 +22,7 @@
     if($_POST['allDay'] == "true"){
       $data['h_inicio'] = "NULL";
       $data['f_final'] = "NULL";
-      $data['h_final'] = "NULL";      
+      $data['h_final'] = "NULL";
       $data['dia_entero'] = '1';
 
     }else{

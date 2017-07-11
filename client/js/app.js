@@ -47,19 +47,7 @@ class EventsManager {
           eventDrop: (event) => {
               this.actualizarEvento(event)
           },
-          //eventos
-          events: [
-              {
-                  title: 'Event1',
-                  start: '2017-07-02'
-              },
-              {
-                  title: 'Event2',
-                  start: '2017-07-15',
-                  end: '2017-07-20'
-              }
-              // etc...
-          ],
+          events: eventos,
           eventDragStart: (event,jsEvent) => {
             $('.delete-btn').find('img').attr('src', "img/trash-open.png");
             $('.delete-btn').css('background-color', '#a70f19')
@@ -106,8 +94,6 @@ class EventsManager {
         success: (data) =>{
           if (data.msg=="OK") {
             alert('Se ha añadido el evento exitosamente')
-            alert(data.dia_entero)
-
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
                 title: $('#titulo').val(),
